@@ -9,7 +9,7 @@ export default function Home() {
         <div className="w-full h-full rounded-lg border-2 border-dashed border-gray-300 p-4">
           <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
           <p className="text-gray-600 dark:text-gray-400">
-            Welcome to your dashboard! Here you can manage your settings, view your profile, and access other features.
+            Welcome to your dashboard! Here you can manage your settings, view your profile, and access other features. Welcome to your dashboard! Here you can manage your settings, view your profile, and access other features.Welcome to your dashboard! Here you can manage your settings, view your profile, and access other features.
           </p>
         </div>
         
