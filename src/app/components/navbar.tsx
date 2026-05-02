@@ -1,34 +1,216 @@
-import Link from 'next/link'
+"use client";
 
-function Navbar() {
-  return (
-    <nav className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-slate-200 dark:bg-black/80 dark:border-slate-700">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-                <Link href="/" className="flex items-center space-x-2">
-                    <span className="font-bold text-xl">Wall-V</span>
-                </Link>
-                <div className="hidden md:flex space-x-6">
-                  <Link href="/" className="text-gray-600 hover:text-gray-900">Wall-V</Link>
-                  <Link href="/about" className="text-gray-600 hover:text-gray-900">About</Link>
-                  <Link href="/blog" className="text-gray-600 hover:text-gray-900">Blog</Link>
-                  <Link href="/services" className="text-gray-600 hover:text-gray-900">Services</Link>
-                  <Link href="/projects" className="text-gray-600 hover:text-gray-900">Projects</Link>
-                  <Link href="/skills" className="text-gray-600 hover:text-gray-900">Skills</Link>
-                  <Link href="/contact" className="text-gray-600 hover:text-gray-900">Contact</Link>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <Link href="/api/login" className="text-gray-600 hover:text-gray-900">Login</Link>
-                  <Link href="/api/register" className="text-gray-600 hover:text-gray-900">Register</Link>
-                </div>
-              </div>
-            </div>
-            <div className="bg-linear-to-r from-transparent via-gray-200 to-transparent h-1 w-full"></div>
-            <div className="container mx-auto px-4 py-2">
-              <p className="text-sm text-gray-500 text-center">Welcome to Wall-V, the portfolio of Valeed Naeem, a full stack developer specializing in web development, software engineering, and technology solutions.</p>
-            </div>
-    </nav>
-  )
+import { MenuIcon } from "lucide-react";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+
+interface Navbar5Props {
+  className?: string;
 }
 
-export default Navbar
+const Navbar5 = ({ className }: Navbar5Props) => {
+  const features = [
+    {
+      title: "Dashboard",
+      description: "Overview of your activity",
+      href: "#",
+    },
+    {
+      title: "Analytics",
+      description: "Track your performance",
+      href: "#",
+    },
+    {
+      title: "Settings",
+      description: "Configure your preferences",
+      href: "#",
+    },
+    {
+      title: "Integrations",
+      description: "Connect with other tools",
+      href: "#",
+    },
+    {
+      title: "Storage",
+      description: "Manage your files",
+      href: "#",
+    },
+    {
+      title: "Support",
+      description: "Get help when needed",
+      href: "#",
+    },
+  ];
+
+  return (
+    <section className={cn("py-4", className)} id="top">
+      <div className="container">
+        <nav className="flex items-center justify-between fixed top-0 z-50 w-full rounded-lg bg-white/80 p-3 backdrop-blur dark:bg-black/80">
+          <a
+            href="https://www.shadcnblocks.com"
+            className="flex items-center gap-2"
+          >
+            <img
+              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
+              className="max-h-8"
+              alt="Shadcn UI Navbar"
+            />
+            <span className="text-lg font-semibold tracking-tighter">
+              Shadcnblocks.com
+            </span>
+          </a>
+          <NavigationMenu className="hidden lg:block">
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Features</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="grid w-[600px] grid-cols-2 p-3">
+                    {features.map((feature, index) => (
+                      <NavigationMenuLink
+                        href={feature.href}
+                        key={index}
+                        className="rounded-md p-3 transition-colors hover:bg-muted/70"
+                      >
+                        <div key={feature.title}>
+                          <p className="mb-1 font-semibold text-foreground">
+                            {feature.title}
+                          </p>
+                          <p className="text-sm text-muted-foreground">
+                            {feature.description}
+                          </p>
+                        </div>
+                      </NavigationMenuLink>
+                    ))}
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  href="#"
+                  className={navigationMenuTriggerStyle()}
+                >
+                  Products
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  href="#"
+                  className={navigationMenuTriggerStyle()}
+                >
+                  Resources
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  href="#"
+                  className={navigationMenuTriggerStyle()}
+                >
+                  Contact
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+          <div className="hidden items-center gap-4 lg:flex">
+            <Button variant="outline">Sign in</Button>
+            <Button>Start for free</Button>
+          </div>
+          <Sheet>
+            <SheetTrigger asChild className="lg:hidden">
+              <Button variant="outline" size="icon">
+                <MenuIcon className="h-4 w-4" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="top" className="max-h-screen overflow-auto">
+              <SheetHeader>
+                <SheetTitle>
+                  <a
+                    href="https://www.shadcnblocks.com"
+                    className="flex items-center gap-2"
+                  >
+                    <img
+                      src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
+                      className="max-h-8"
+                      alt="Shadcn UI Navbar"
+                    />
+                    <span className="text-lg font-semibold tracking-tighter">
+                      Shadcnblocks.com
+                    </span>
+                  </a>
+                </SheetTitle>
+              </SheetHeader>
+              <div className="flex flex-col p-4">
+                <Accordion type="single" collapsible className="mt-4 mb-2">
+                  <AccordionItem value="solutions" className="border-none">
+                    <AccordionTrigger className="text-base hover:no-underline">
+                      Features
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <div className="grid md:grid-cols-2">
+                        {features.map((feature, index) => (
+                          <a
+                            href={feature.href}
+                            key={index}
+                            className="rounded-md p-3 transition-colors hover:bg-muted/70"
+                          >
+                            <div key={feature.title}>
+                              <p className="mb-1 font-semibold text-foreground">
+                                {feature.title}
+                              </p>
+                              <p className="text-sm text-muted-foreground">
+                                {feature.description}
+                              </p>
+                            </div>
+                          </a>
+                        ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+                <div className="flex flex-col gap-6">
+                  <a href="#" className="font-medium">
+                    Templates
+                  </a>
+                  <a href="#" className="font-medium">
+                    Blog
+                  </a>
+                  <a href="#" className="font-medium">
+                    Pricing
+                  </a>
+                </div>
+                <div className="mt-6 flex flex-col gap-4">
+                  <Button variant="outline">Sign in</Button>
+                  <Button>Start for free</Button>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </nav>
+      </div>
+    </section>
+  );
+};
+
+export { Navbar5 };
