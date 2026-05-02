@@ -1,64 +1,37 @@
-import Footer from "./components/footer";
-import Navbar from "./components/navbar";
+import { AppSidebar } from "@/components/app-sidebar"
+import { ChartAreaInteractive } from "@/components/chart-area-interactive"
+import { DataTable } from "@/components/data-table"
+import { SectionCards } from "@/components/section-cards"
+import { SiteHeader } from "@/components/site-header"
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 
-export default function Home() {
+import data from "./data.json"
+
+export default function Page() {
   return (
-    <div className="flex flex-col flex-1 w-full items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <Navbar />
-      <main className="flex flex-1 w-full flex-col items-center justify-between py-2 px-8 bg-white dark:bg-black sm:items-start">
-        <div className="flex flex-row w-full h-full rounded-lg border-2 border-dashed border-gray-300 p-4">
-          {/* <h1 className="text-2xl font-bold mb-4">Dashboard</h1> */}
-          <span className="flex flex-col items-start justify-start w-full">
-            <h3 className="text-lg font-semibold mb-2">Customers!</h3>
-            <div className="stats stats-vertical lg:stats-horizontal shadow">
-              <div className="stat">
-                <div className="stat-title">Visitors</div>
-                <div className="stat-value">31K</div>
-                <div className="stat-desc">Jan 1st - Feb 1st</div>
+    <SidebarProvider
+      style={
+        {
+          "--sidebar-width": "calc(var(--spacing) * 72)",
+          "--header-height": "calc(var(--spacing) * 12)",
+        } as React.CSSProperties
+      }
+    >
+      <AppSidebar variant="inset" />
+      <SidebarInset>
+        <SiteHeader />
+        <div className="flex flex-1 flex-col">
+          <div className="@container/main flex flex-1 flex-col gap-2">
+            <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+              <SectionCards />
+              <div className="px-4 lg:px-6">
+                <ChartAreaInteractive />
               </div>
-
-              <div className="stat">
-                <div className="stat-title">Customers!</div>
-                <div className="stat-value">4,200</div>
-                <div className="stat-desc">↗︎ 400 (22%)</div>
-              </div>
-
-              <div className="stat">
-                <div className="stat-title">New Projects!</div>
-                <div className="stat-value">1,200</div>
-                <div className="stat-desc">↘︎ 90 (14%)</div>
-              </div>
+              <DataTable data={data} />
             </div>
-          </span>
-
-          <span className="flex flex-col items-start justify-start w-full">
-            <h3 className="text-lg font-semibold mb-2">Orders!</h3>
-            <div className="stats stats-vertical lg:stats-horizontal shadow">
-              <div className="stat">
-                <div className="stat-title">Total Orders</div>
-                <div className="stat-value">31K</div>
-                <div className="stat-desc">Jan 1st - Feb 1st</div>
-              </div>
-
-              <div className="stat">
-                <div className="stat-title">New Orders!</div>
-                <div className="stat-value">4,200</div>
-                <div className="stat-desc">↗︎ 400 (22%)</div>
-              </div>
-
-              <div className="stat">
-                <div className="stat-title">New Sales!</div>
-                <div className="stat-value">1,200</div>
-                <div className="stat-desc">↘︎ 90 (14%)</div>
-              </div>
-            </div>
-          </span>
-
-          <div className="divider"></div>
+          </div>
         </div>
-
-      </main>
-      <Footer />
-    </div>
-  );
+      </SidebarInset>
+    </SidebarProvider>
+  )
 }
