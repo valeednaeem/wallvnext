@@ -5,11 +5,12 @@ import {
   FaLinkedin,
   FaTwitter,
 } from "react-icons/fa";
-import {
-  Logo,
-  LogoImageDesktop,
-  LogoImageMobile,
-} from "@/components/shadcnblocks/logo";
+
+// import {
+//   Logo,
+//   LogoImageDesktop,
+//   LogoImageMobile,
+// } from "@/components/shadcnblocks/logo";
 
 import { cn } from "@/lib/utils";
 
