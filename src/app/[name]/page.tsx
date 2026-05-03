@@ -1,6 +1,6 @@
 import React from 'react'
 
-async function page({ params } : { params: { name: string } }) {
+async function page({params}:{params: {name: string}}) {
   const name = params.name;
   return (
     <>
