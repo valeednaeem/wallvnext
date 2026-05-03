@@ -1,11 +1,10 @@
 import React from 'react'
 
-async function page({params}:{params: {name: string}}) {
-  const name = params.name;
+async function page() {
   return (
     <>
         <div className="flex flex-col flex-1 items-center justify-center font-sans dark:bg-black">
-              <h1>Hello, {name}!</h1>
+              <h1>Hello!</h1>
         </div>
     </>
   )
