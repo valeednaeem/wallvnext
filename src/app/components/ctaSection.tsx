@@ -1,0 +1,89 @@
+import { ArrowRight, Check } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+
+import { cn } from "@/lib/utils";
+
+interface Button {
+  text: string;
+  url: string;
+  icon?: React.ReactNode;
+}
+interface Buttons {
+  primary?: Button;
+  secondary?: Button;
+}
+
+interface CtaSimpleFeaturesProps {
+  heading: string;
+  description?: string;
+  buttons?: Buttons;
+  features: string[];
+  className?: string;
+}
+
+type Props = Partial<CtaSimpleFeaturesProps>;
+
+const defaultProps: CtaSimpleFeaturesProps = {
+  heading: "Call to Action",
+  description:
+    "Get access to our collection of pre-built blocks and components today.",
+  buttons: {
+    primary: {
+      text: "Get Started",
+      url: "#",
+    },
+  },
+  features: [
+    "Easy Integration",
+    "24/7 Support",
+    "Customizable Design",
+    "Scalable Performance",
+    "Hundreds of Blocks",
+  ],
+};
+
+const Cta4 = (props: Props) => {
+  const { heading, description, buttons, features, className } = {
+    ...defaultProps,
+    ...props,
+  };
+
+  return (
+    <section className={cn("py-4", className)} id="cta">
+      <div className="container mx-auto">
+        <div className="flex justify-center">
+          <div className="max-w-5xl">
+            <div className="flex flex-col items-start justify-between gap-8 rounded-lg bg-muted px-6 py-10 md:flex-row lg:px-20 lg:py-16">
+              <div className="md:w-1/2">
+                <h4 className="mb-1 text-2xl font-bold md:text-3xl">
+                  {heading}
+                </h4>
+                <p className="text-muted-foreground">{description}</p>
+                {buttons?.primary && (
+                  <Button className="mt-6" asChild>
+                    <a href={buttons.primary.url}>
+                      {buttons.primary.text} <ArrowRight className="size-4" />
+                    </a>
+                  </Button>
+                )}
+              </div>
+              <div className="md:w-1/3">
+                <ul className="flex flex-col space-y-2 text-sm font-medium">
+                  {features.map((item, idx) => (
+                    <li className="flex items-center" key={idx}>
+                      <Check className="mr-4 size-4 shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export { Cta4 };

@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-interface Hero47Props {
+interface HeroSectionProps {
   heading?: string;
   subheading?: string;
   description?: string;
@@ -24,7 +24,7 @@ interface Hero47Props {
   className?: string;
 }
 
-const Hero47 = ({
+const HeroSection = ({
   heading = "Epic Blocks",
   subheading = " built with shadcn/ui & Tailwind",
   description = "Finely crafted components built with React, Tailwind and Shadcn UI. Developers can copy and paste these blocks directly into their project.",
@@ -43,9 +43,9 @@ const Hero47 = ({
     alt: "Placeholder",
   },
   className,
-}: Hero47Props) => {
+}: HeroSectionProps) => {
   return (
-    <section className={cn("bg-background py-20 lg:py-32", className)}>
+    <section className={cn("bg-background py-4 lg:py-32", className)}>
       <div className="container flex flex-col items-center gap-10 lg:my-0 lg:flex-row">
         <div className="flex flex-col gap-7 lg:w-2/3">
           <h2 className="text-5xl font-semibold text-foreground md:text-5xl lg:text-8xl">
@@ -92,4 +92,4 @@ const Hero47 = ({
   );
 };
 
-export { Hero47 };
+export { HeroSection };
