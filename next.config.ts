@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   images: {
-    domains: [
+    remotePatterns: [
       'deifkwefumgah.cloudfront.net',
       'via.placeholder.com',
       'lh3.googleusercontent.com',
