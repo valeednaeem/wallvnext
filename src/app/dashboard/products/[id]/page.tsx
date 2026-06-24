@@ -1,5 +1,5 @@
 import ProductForm
-  from "@/components/forms/product-form";
+  from "@/components/forms/category-form";
 
 export default async function EditProductPage() {
   return (
